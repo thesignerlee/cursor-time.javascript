@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer-4</title>
+    <style>
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        #slider_wrap {
+            height:200px; overflow: hidden; border:5px solid #000; width:700px;
+        }
+        #slider_wrap #slider_container {
+            /* height:max-content; */
+
+            position:relative;
+        }
+        #slider_wrap #slider_container .slide {
+            position: absolute;
+            left: 0; top: 0; opacity: 0;
+            line-height: 200px; width:700px; text-align: center; font-size: 5rem;
+            transition: all 0.5s;
+        }
+        #slider_wrap #slider_container .slide1 {background: aqua;}
+        #slider_wrap #slider_container .slide2 {background: pink;}
+        #slider_wrap #slider_container .slide3 {background: coral;}
+        @keyframes rotate{
+            0% {transform: rotateY(0);}
+            100% {transform: rotateY(180deg);}
+        }
+    </style>
+</head>
+<body>
+    <!-- 꼭 지켜야 하는 슬라이드 구조 태그 -->
+    <div id="slider_wrap">
+        <div id="slider_container"> <!-- 태그에서 움직이는 건 슬라이드가 아니라 슬라이드 컨테이너 -->
+            <div class="slide slide1">1</div>
+            <div class="slide slide2">2</div>
+            <div class="slide slide3">3</div>
+        </div>
+    </div>
+    
+    <script>
+
+const slide = document.querySelector('#slider_container')
+const slide2 = document.querySelectorAll('.slide')
+        let slide_h = slide.firstElementChild.offsetHeight
+        let count = slide.childElementCount-1
+        let num = 0
+        let timer = setInterval(slide_timer,1000)
+        slide2[0].style.opacity = 1
+        function slide_timer(){
+            num++
+            console.log(num)
+            if(num>2){num=0
+                for(let i of slide2){i.style.opacity = 0}
+            }
+            slide2[num].style.opacity = 1
+        }
+
+
+    </script>
+</body>
+</html>

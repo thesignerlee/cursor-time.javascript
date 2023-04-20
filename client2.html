@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client2</title>
+    <style>
+        body {cursor:none;}
+        .circle {
+            width:30px; height:30px; border-radius: 50%;
+            /* border: 2px solid #222; */
+            position:fixed; left:0; top:0;
+            /* transition:all 0.2s ease; */
+            transform: translate(-50%, -50%);
+        }
+        .circle img {width:100%;}
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <img src="./images/mouse-cursor.png" alt="">
+    </div>
+
+    <script>
+
+        const circle = document.querySelector('.circle')
+
+        window.addEventListener('mousemove',(e)=>{
+            circle.style.left = `${e.clientX}px`
+            circle.style.top = `${e.clientY}px`
+        })
+//마우스 커서 움직이기
+    </script>
+</body>
+</html>

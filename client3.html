@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client3</title>
+    <style>
+        body {/* cursor:none; */}
+        nav {background: #eee; display: flex; justify-content: center;}
+        nav a {line-height: 100px; padding:0 20px;}
+        .circle {
+            /*마우스 포인터보다 태그가 먼저 닿아서 이벤트 인식이 안 될 경우 */
+            pointer-events: none;/* ==>태그의 이벤트 해제하기 */
+            width:30px; height:30px; border-radius: 50%;
+            border: 2px solid #222;
+            position:fixed; left:0; top:0;
+            /* transition:all 0.2s ease; */
+            transform: translate(-50%, -50%);
+        }
+        /* .circle img {width:100%;} */
+        .circle_style {
+            background: #222; border:2px solid #555; z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">menu1</a>
+        <a href="#">menu2</a>
+        <a href="#">menu3</a>
+        <a href="#">menu4</a>
+        
+    </nav>
+    <div class="circle">
+        <!-- <img src="./images/mouse-cursor.png" alt=""> -->
+    </div>
+
+    <script>
+
+        const nav_a = document.querySelectorAll('nav a')
+        const circle = document.querySelector('.circle')
+
+        window.addEventListener('mousemove',(e)=>{
+            circle.style.left = `${e.clientX}px`
+            circle.style.top = `${e.clientY}px`
+        })
+        for(let i of nav_a){
+            i.addEventListener('mouseover',()=>{
+                circle.classList.add('circle_style')
+            })
+            i.addEventListener('mouseout',()=>{
+                circle.classList.remove('circle_style')
+            })
+        }
+//선택되는 a나 버튼에 마우스 커서를 올렸을 때 디자인이 달라지게 만들기
+    </script>
+</body>
+</html>

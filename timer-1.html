@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer-1</title>
+</head>
+<body>
+    
+    <script>
+        
+        //setInterval 일정시간 반복 타이머 함수
+        //1~5, 1~5, 1~5
+        let num = 0 //만들어진 변수의 값을 증가함.
+        setInterval(()=>{
+            // let num 얘는 변수를 계속 만들기만 함.
+            console.log('setInterval-'+num)
+            num++
+            if(num>5){num=0}
+            
+        },1000)/*()=>{} , 속도(ms) 1000 1초 */
+    </script>
+</body>
+</html>

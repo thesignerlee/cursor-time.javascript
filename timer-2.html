@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer-2</title>
+    <style>
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        #slider_wrap {
+            border: 5px solid #000;
+            width: 700px; overflow: hidden; /* 슬라이드 할 때 가리기 */
+            margin: 0 auto;
+        }
+        #slider_wrap #slider_container {
+            width: max-content; display: flex;
+            /* transform: translateX(-0px); x 0
+            transform: translateX(-700px); x 1
+            transform: translateX(-1400px); x 2 */
+            transition: all 0.5s;
+            
+        }
+        #slider_wrap #slider_container .slide {
+            line-height: 200px; width:700px; text-align: center; font-size: 5rem;
+        }
+        #slider_wrap #slider_container .slide1 {background: aqua;}
+        #slider_wrap #slider_container .slide2 {background: pink;}
+        #slider_wrap #slider_container .slide3 {background: coral;}
+    </style>
+</head>
+<body>
+    <!-- 꼭 지켜야 하는 슬라이드 구조 태그 -->
+    <div id="slider_wrap">
+        <div id="slider_container"> <!-- 태그에서 움직이는 건 슬라이드가 아니라 슬라이드 컨테이너 -->
+            <div class="slide slide1">1</div>
+            <div class="slide slide2">2</div>
+            <div class="slide slide3">3</div>
+        </div>
+    </div>
+    
+    <script>
+        
+        let num = 0 //DOM 인덱스의 모든 개체는 0부터 시작하기 때문
+        const slide = document.querySelector('#slider_container')
+        console.log(slide.childElementCount)
+        console.log(slide.children.length)
+        console.log(slide.firstElementChild.offsetWidth)
+        console.log(slide.children[0].offsetWidth)
+        let slide_w = slide.firstElementChild.offsetWidth
+        let count = slide.childElementCount-1
+        setInterval(()=>{
+            //12012012012.....
+            // num++
+            // if(num>2){num = 0}
+            // console.log(num)
+            num++
+            if(num>count){num = 0}
+            console.log(num)
+            slide.style.transform = `translateX(-${slide_w*num}px)`
+        },1000)
+
+    </script>
+</body>
+</html>
